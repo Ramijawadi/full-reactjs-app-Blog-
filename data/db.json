@@ -1,0 +1,10 @@
+{
+  "blogs": [
+    { "title": "sport", "author": "rami jawadi", "id": 1 },
+    { "title": "commercial", "author": "salah mouhamed", "id": 2 },
+    { "title": "social", "author": "ibnou khouldoun", "id": 3 },
+    { "title": "developpment", "author": "rami jawadi", "id": 4 },
+    { "title": "developpment", "author": "salah amine", "id": 5 },
+    { "title": "developpment", "author": "mkadmi mouadh", "id": 6 }
+  ]
+}
