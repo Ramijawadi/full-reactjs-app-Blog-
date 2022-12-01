@@ -1,19 +1,21 @@
 import React from "react";
 import BlogList from "./BlogList";
 import { useFetch } from './useFetch';
+import { Wrapper,DivWrapper} from "./styles/styled";
+
 
 const Home = () => {
  
 const { data: blogs , isLoading , error} = useFetch( "http://localhost:8000/blogs")
 
   return  (
-    <div className="home">
-      {error && <div  style={{ textAlign: "center", fontSize: "50px", color: "blue" }}> { error }</div>}
+    <div>
+      {error &&   <DivWrapper>{ error }</DivWrapper>}
       {isLoading && (
-        <div style={{ textAlign: "center", fontSize: "50px", color: "pink" }}>
+        <Wrapper>
           {" "}
           Loading ...
-        </div>
+          </Wrapper>
       )}
       {blogs && <BlogList blogs={blogs} />}
     </div>

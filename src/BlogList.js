@@ -1,16 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { StyledArticle } from './styles/styled';
 
-const BlogList = ({blogs , title}) => {
+const BlogList = ({blogs}) => {
   return (
-    <div className='blog-list'>
+    <div>
 
-        <h2> {title}</h2>
     {blogs.map((blog) => (
-        <div className="blog-preview" key={blog.id}>
+        <StyledArticle className="blog-preview" key={blog.id}>
+          <Link to = {`/blogs/${blog.id}`}>
           <h2> {blog.title} </h2>
-          <p> written by {blog.author}</p>
+          <h1> {blog.body} </h1>
+          <h2> written by {blog.author}</h2>
+          </Link>
         
-        </div>
+        </StyledArticle>
       ))}
     </div>
   )
