@@ -10,7 +10,7 @@ const handleSubmit = (e) => {
 e.preventDefault();
 
 const blog = {title , author , body};
-console.log(blog);
+console.log(blog);  
 
 }
 
@@ -19,7 +19,7 @@ console.log(blog);
     <div className="create">
       <h2>Add a new Blog</h2>
       <form onSubmit={handleSubmit} >
-        <label> blog title</label>
+        <label>  a blog title</label>
         <input type="text"
          required
          value={title}
