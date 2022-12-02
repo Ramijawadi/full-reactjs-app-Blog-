@@ -64,7 +64,23 @@
 .blog-details div {
   margin: 20px 0;
 }
+.blog-details button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
+.blog-details button:hover {
+  background:rgb(243, 116, 116);
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
 /* create new blog form */
 .create {

@@ -1,18 +1,35 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
 
 const Create = () => {
 
-    const [title , setTitle] = useState('');
-    const [body, setBody]=useState('');
-    const [author , setAuthor] = useState('salah amine');
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const [author, setAuthor] = useState('salah amine');
+  const [ isLoading , setisLoading] = useState(false);
+  const history = useHistory();
 
-const handleSubmit = (e) => {
-e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-const blog = {title , author , body};
-console.log(blog);  
+    const blog = { title, author, body };
+    setisLoading(true);
+    fetch('http://localhost:8000/blogs/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(blog)
 
-}
+    })
+      .then(() => {
+        console.log('new blog added');
+        setisLoading(false)
+        console.log(blog)
+        history.push('/');
+      }
+
+      )
+  }
 
 
   return (
@@ -21,11 +38,11 @@ console.log(blog);
       <form onSubmit={handleSubmit} >
         <label>  a blog title</label>
         <input type="text"
-         required
-         value={title}
-         onChange={(e)=> setTitle(e.target.value)}
-         
-         />
+          required
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+
+        />
 
         <label> blog body</label>
         <textarea
@@ -36,10 +53,10 @@ console.log(blog);
 
         <label> blog author</label>
         <select
-        required
-        value={author}
-        onChange={(e)=> setAuthor(e.target.value)}
-        
+          required
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+
         >
           <option value="rami jawadi">rami jawadi</option>
           <option value="salah mouhamed">salah mouhamed</option>
@@ -47,14 +64,10 @@ console.log(blog);
           <option value="salah amine">salah amine</option>
           <option value="mkadmi mouadh">mkadmi mouadh</option>
         </select>
-
-     
-
-        <button>Add Blog </button>
-        <p>{title}</p>
-        <p>{body}</p>
-        <p>{ author}</p>
+        {!isLoading && <button >Add Blog </button>}
+        {isLoading && <button disabled  >Adding blog ... </button>}
        
+
       </form>
     </div>
   );
